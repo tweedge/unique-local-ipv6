@@ -76,12 +76,12 @@ function setDefaultCacheControl(extension) {
     case "js":
       return "max-age=1209600"
 
-    /* FIVE MINUTE CACHE
+    /* ONE HOUR CACHE
      * For: no trailing extension, html, xml, txt, json, everything else
      * Changes: frequently/unknown
      */
     default:
-      return "max-age=300"
+      return "max-age=3600"
   }
 }
 
