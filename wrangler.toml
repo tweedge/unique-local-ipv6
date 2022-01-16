@@ -1,0 +1,10 @@
+name = "unique-local-ipv6"
+type = "webpack"
+account_id = "583a61916394f22ed8f17c5734e3c970"
+workers_dev = false
+route = "unique-local-ipv6.com/*"
+zone_id = "7764cb90cdd1d970c375c4a3940162fe"
+
+[site]
+bucket = "./site"
+entry-point = "workers"
