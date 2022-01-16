@@ -1,4 +1,4 @@
-document.getElementById("generate-button").addEventListener("click", modeSwitcher);
+document.getElementById("generate-button").addEventListener("click", generate);
 
 function random_block(bits, leading_zeroes)
 {
