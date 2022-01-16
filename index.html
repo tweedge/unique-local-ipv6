@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Unique Local IPv6 Generator</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/libraries/bootstrap/3.0.3/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Generator</a></li>
+          <li><a href="unique-local.html">Unique-Local</a></li>
+          <li><a href="ipv6-address-basics.html">IPv6 Basics</a></li>
+        </ul>
+        <h3 class="text-muted">Unique Local IPv6 Generator</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1 class="prefix">fd40:9dc7:b528::/48</h1>
+        <p class="lead">This is a randomly generated 48-bit unique local IPv6 prefix as defined by <a href="http://tools.ietf.org/html/rfc4193">RFC 4193</a>.  It can be used for local IPv6 networking. Everytime the regenerate button is pressed or the page is reloaded a new random prefix will be generated.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button" onclick="generate()">Regenerate</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>64-bit subnetting</h4>
+          <p>Unique local addresses have 48-bit prefixes, leaving 16 bits for local subnetting. Below see the addresses of the first and last subnets.</p>
+          <table class="table table-hover">
+            <tr>
+              <th>Prefix</th>
+              <td class="prefix">fd40:9dc7:b528::/48</td>
+            </tr>
+            <tr>
+              <th>1st subnet</th>
+              <td class="sub-1st">fd40:9dc7:b528::/64</td>
+            </tr>
+            <tr>
+              <th>last subnet</th>
+              <td class="sub-last">fd40:9dc7:b528:ffff::/64</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>IPv4 local address equivalent</h4>
+          <p>
+            The IPv6 unique local addresses are used similarly to the IPv4
+            local adresses e.g. 10.0.0.0/8. Unlike their IPv4 counterpart IPv6 unique local
+            addresses have a 40-bit random part. Therefore if you connect 2 or more unique
+            local networks, by VPN for example, it's very unlikely to ever have address
+            collisions.
+            <a href="about.html">[+]</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p class="pull-right">&copy; 2013 unique-local-ipv6.com</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <script src="/libraries/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
+    <script src="/js/uniquelocal.js">
+      generate();
+    </script>
+
+  </body>
+</html>
