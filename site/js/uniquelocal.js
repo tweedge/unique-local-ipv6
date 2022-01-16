@@ -1,3 +1,5 @@
+document.getElementById("generate-button").addEventListener("click", modeSwitcher);
+
 function random_block(bits, leading_zeroes)
 {
     var block = Math.floor(Math.random()*Math.pow(2,bits)).toString(16); 
