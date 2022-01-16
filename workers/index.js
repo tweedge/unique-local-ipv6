@@ -96,7 +96,7 @@ function createResponseWithHeaders(body, page, cache) {
   response.headers.set('X-XSS-Protection', '1; mode=block')
   response.headers.set('X-Content-Type-Options', 'nosniff')
   response.headers.set('X-Frame-Options', 'DENY')
-  response.headers.set('Content-Security-Policy', 'default-src https://unique-local-ipv6.com:443; frame-ancestors \'none\'')
+  response.headers.set('Content-Security-Policy', 'default-src https://unique-local-ipv6.com:443 https://www.unique-local-ipv6.com:443; frame-ancestors \'none\'')
   response.headers.set('Referrer-Policy', 'no-referrer-when-downgrade')
 
   return response
