@@ -19,4 +19,4 @@ jobs:
       - name: Update S3
         run: |
           rm -rf .git README.md
-          aws s3 sync ./ s3://unique-local-ipv6-com --delete
+          aws s3 sync ./ s3://unique-local-ipv6-com --delete --cache-control max-age=604800
