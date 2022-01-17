@@ -3,16 +3,16 @@
   <head>
     <title>Unique Local IPv6 Generator</title>
     <meta charset="utf-8">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/libraries/bootstrap/3.0.3/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="libraries/bootstrap/3.0.3/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="/">Generator</a></li>
-          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="faq.html">FAQ</a></li>
           <li><a href="https://chris.partridge.tech/2022/digital-resurrection/">About</a></li>
         </ul>
         <h3 class="text-muted">Unique Local IPv6 Generator</h3>
@@ -20,14 +20,16 @@
 
       <div class="jumbotron">
         <h1 class="prefix">::/48</h1>
-        <p class="lead">This is a randomly generated 48-bit unique local IPv6 prefix as defined by <a href="http://tools.ietf.org/html/rfc4193">RFC 4193</a>. It can be used for local IPv6 networking. A new random prefix will be generated every time the regenerate button is pressed or the page is reloaded.</p>
+        <p class="lead">This is a randomly generated 48-bit unique local IPv6 prefix as defined by <a href="https://datatracker.ietf.org/doc/html/rfc4193">RFC 4193</a>. It can be used for local IPv6 networking. A new random prefix will be generated every time the regenerate button is pressed or the page is reloaded.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button" id="generate-button">Regenerate</a></p>
       </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>64-bit subnetting</h4>
-          <p>Unique local addresses have 48-bit prefixes, leaving 16 bits for local subnetting. Below is the prefix as well as the addresses of the first and last subnets.</p>
+          <p>
+            Unique local addresses have 48-bit prefixes, leaving 16 bits for local subnetting. Below is the prefix as well as the addresses of the first and last subnets.
+          </p>
           <table class="table table-hover">
             <tr>
               <th>Prefix</th>
@@ -42,6 +44,9 @@
               <td class="sub-last">:ffff::/64</td>
             </tr>
           </table>
+          <p>
+            Not sure which subnet ID to use? Check the <a href="https://unique-local-ipv6.com/faq.html#subnet">FAQ</a>!
+          </p>
         </div>
 
         <div class="col-lg-6">
@@ -53,12 +58,14 @@
       </div>
 
       <div class="footer">
-        <p class="pull-right">&copy; 2013 unique-local-ipv6.com</p>
+        <p class="pull-right">
+          Original &copy; 2013 unique-local-ipv6.com, with updates by <a href="https://chris.partridge.tech/">tweedge</a>.
+        </p>
       </div>
     </div>
-    <script src="/libraries/jquery/1.10.2/jquery.min.js"></script>
-    <script src="/libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
-    <script src="/js/uniquelocal.js">
+    <script src="libraries/jquery/1.10.2/jquery.min.js"></script>
+    <script src="libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
+    <script src="js/uniquelocal.js">
       generate();
     </script>
   </body>

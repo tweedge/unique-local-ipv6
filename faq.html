@@ -3,16 +3,16 @@
   <head>
     <title>Unique Local IPv6 Generator</title>
     <meta charset="utf-8">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/libraries/bootstrap/3.0.3/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="libraries/bootstrap/3.0.3/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li><a href="/">Generator</a></li>
-          <li class="active"><a href="/faq.html">FAQ</a></li>
+          <li class="active"><a href="faq.html">FAQ</a></li>
           <li><a href="https://chris.partridge.tech/2022/digital-resurrection/">About</a></li>
         </ul>
         <h3 class="text-muted">Unique Local IPv6 Generator</h3>
@@ -21,54 +21,57 @@
       <div>         
         <h2>Frequently Asked Questions</h2>
         <ul>
-          <li><a href="#what">What's a unique local address?</a></li>
-          <li><a href="#use">What's the use?</a></li>
-          <li><a href="#unique">Why do they need to be unique?</a></li>
-          <li><a href="#globally">Are they really globally unique?</a></li>
+          <li><a href="#what-is-ula">What's a unique local address (ULA)?</a></li>
+          <li><a href="#why-private">Why are private addresses useful?</a></li>
+          <li><a href="#why-unique">Why should private addresses be unique?</a></li>
           <li><a href="#composition">What is the composition of an IPv6 ULA?</a></li>
-          <li><a href="#easy">Isn't there an easy way?</a></li>
-          <li><a href="#subnet">What is the subnet id?</a></li>
-          <li><a href="#info">Where can I get more information?</a></li>
+          <li><a href="#fc7-vs-fd8">What's the difference between fc::/7 and fd::/8?</a></li>
+          <li><a href="#picking-a-subnet">What Subnet ID should I use?</a></li>
+          <li><a href="#easy">Isn't there an easier way to do this?</a></li>
+          <li><a href="#globally-unique">Are IPv6 ULAs really globally unique?</a></li>
+          <li><a href="#global-ids-by-us">How does this site generate Global IDs?</a></li>
+          <li><a href="#global-ids-by-rfc">Is this the Global ID generation method recommended by RFC 4193?</a></li>
+          <li><a href="#more-info">Where can I get more information?</a></li>
         </ul>
 
-        <h3 id="what">What's a unique local address?</h3>
+        <h3 id="what-is-ula">What's a unique local address (ULA)?</h3>
         <p>
-          IPv6 unique local addresses are similar to the IPv4 private address classes with one big difference: THE ARE UNIQUE.
+          IPv6 <a href="https://en.wikipedia.org/wiki/Unique_local_address">ULAs</a> are private IP addresses, similar to IPv4 private addresses which you might recognize, such as 192.168.1.1. The biggest difference is that IPv6 addresses are designed to be unique.
         </p>
-        <h4>IPv4 private addresses</h4>
-        <table>
-          <tr>
-            <th>Class A</th>
-            <td>10.0.0.0/8</td>
-          </tr>
-          <tr>
-            <th>Class B</th>
-            <td>172.16.0.0/12</td>
-          </tr>
-          <tr>
-            <th>Class C</th>
-            <td>192.168.0.0/16</td>
-          </tr>
-        </table>
-        <h4>IPv6 unique local addresses</h4>
-        <p>fd00::/48 - fd00:ffff:ffff::/48</p>
+        <h4>IPv4 Private Addresses</h4>
+        <ul>
+          <li>Private addresses defined in <a href="https://datatracker.ietf.org/doc/html/rfc1918">RFC 1918</a>.</li>
+          <li>Contains several address blocks which can be used for private addressing:</li>
+          <ul>
+            <li>Class A: 10.0.0.0/8 (contains 16,777,216 IPs).</li>
+            <li>Class B: 172.16.0.0/12 (contains 1,048,576 IPs).</li>
+            <li>Class C: 192.168.0.0/16 (contains 65,536 IPs).</li>
+          </ul>
+          <li>Not designed to be unique.</li>
+        </ul>
+        <h4>IPv6 Unique Local Addresses</h4>
+        <ul>
+          <li>Private addresses defined in <a href="https://datatracker.ietf.org/doc/html/rfc4193">RFC 4193</a>.</li>
+          <li>Contains one address block with a defined mechanism for generating local, per-site subnets:</li>
+          <ul>
+            <li>The address block is fd00::/8.</li>
+            <li>Network administrators are directed to select a /48 block - such as fd00:0000:0000::/48 - randomly.</li>
+            <li>Network administrators can then use that /48 block as needed, though a /64 is the minimum allocation and contains 18,446,744,073,709,551,616 IPs.</li>
+          </ul>
+          <li>The /48 address block, and therefore any networks within, are intended to be <a href="#globally-unique">reasonably unique.</a></li>
+        </ul>
 
-        <h3 id="use">What's the use?</h3>
+        <h3 id="why-private">Why are private addresses useful?</h3>
         <p>
-          Local network addresses are used to make specific services only available for people and computers within your private network.
+          Local network addresses are used to make specific services readily available for people and computers within your private network, but not (readily) available to people off-network such as attackers. The actual security level this provides is contested.
         </p>
         <p>
-          For example if your company runs an intranet website containing confidential information about products, sales, customers or what so ever. This information might be vital for your employees to do their jobs, but you definitely don't want to make this website available publicly.
-        </p>
-        
-        <h3 id="unique">Why do they need to be unique?</h3>
-        <p>
-          Sometimes you want to join two or more private networks. A common example is when you connect your PC from your home network to your office network using a VPN. When both networks use the same private address range (e.g. 192.168.1.0/24) you only reach the office network during your VPN session as a result of a routing problem.
+          There may also be more niche usecases, such as multi-WAN configurations at home, since in the current ISP climate you are almost certainly unable to announce your own IPv6 addresses.
         </p>
         
-        <h3 id="globally">Are they really globally unique?</h3>
+        <h3 id="why-unique">Why should private addresses be unique?</h3>
         <p>
-          The global id part of unique local addresses is a randomly generated 40-bit integer. So there's a small possibility that two networks on this planet use the same unique local address. But there's a very little likelihood that this is ever going to happen. PROBABILITY: 1:1099511627776 or ~0.000000000001
+          Sometimes you want to join two or more private networks. A common example is when you connect your PC from your home network to your office network using a VPN, or when an enterprise is joining multiple office networks together. When both networks use the same private address range (ex. 192.168.1.0/24), this creates IP address conflicts, and can disrupt or entirely prevent communication.
         </p>
 
         <h3 id="composition">What is the composition of a IPv6 ULA?</h3>
@@ -79,51 +82,89 @@
           | Prefix |L| Global ID  | Subnet ID |        Interface ID        |
           +--------+-+------------+-----------+----------------------------+
         </pre>
-        <table>
-          <tr>
-            <th>Prefix</th>
-            <td>fc::/7</td>
-          </tr>
-          <tr>
-            <th>Local (L)</th>
-            <td>1</td>
-          </tr>
-          <tr>
-            <th>Global ID</th>
-            <td>Uniquely identifies your network</td>
-          </tr>
-          <tr>
-            <th>Subnet ID</th>
-            <td>0 - ffff <i>use freely for your own IPv6 subnetting</i></td>
-          </tr>
-          <tr>
-            <th>Interface ID</th>
-            <td>Your host address. </td>
-          </tr>
-        </table>
-        
-        <h3 id="easy">Isn't there an easy way?</h3>
+        <ul>
+          <li><b>Prefix</b>: fc::/7</li>
+          <li><b>Local (L) bit</b>: Must be set to 1</li>
+          <li><b>Global ID</b>: Uniquely identifies your network</li>
+          <li><b>Subnet ID</b>: 0 - ffff, can be used however you need</li>
+          <li><b>Interface ID</b>: Host addresses within your subnet</li>
+        </ul>
+
+        <h3 id="fc7-vs-fd8">What's the difference between fc::/7 and fd::/8?</h3>
         <p>
-          If you want to use a unique local network for your personal use or for testing only, no one bars you from using fd00::/48, fd00:abba::/48 or fd00:1234::/48. But keep in mind there's are reason they have been made unique in the first place. And there's actually no good reason not to use a randomly generated address. How about that one on top of this page?
+          The prefix allocated by RFC 4193 for private addressing is fc::/7, but the 8th bit ("Local" or L) <i>must</i> be set to 1, which makes the prefix that we can actually <i>use</i> start with "fd."
         </p>
-        
-        <h3 id="subnet">What is the subnet id?</h3>
+        <pre>
+              bit position: 12345678
+          hex: fc | binary: 11111100
+          hex: fd | binary: 11111101
+        </pre>
         <p>
-          After the global id you have 16 bits for your subnetting. Use them at will.
+          Don't quite get it? Try the <a href="https://simple.wikipedia.org/wiki/Hexadecimal">Simple English Wikipadia entry on hexadecimal</a> - should help!
         </p>
         <p>
-          If you don't have any subnetting plans right now, just start with 0000 (luckily you don't have to write that).
+          This also halves the address block's size, as one additional bit has been reserved, hence why it's fd::/8 and <i>not</i> fd::/7.
+        </p>
+
+        <h3 id="picking-a-subnet">What Subnet ID should I use?</h3>
+        <p>
+          After the Global ID you have 16 bits for your subnetting, which you can use however you like. If you don't have any subnetting plans right now, it's probably best to just start with what's shown on the "first subnet" on the <a href="/">generator</a>, which is a /64 subnet using 0000 as the Subnet ID. You could use a bigger subnet if needed, such as to match the size of the addresses delegated to your network by your ISP.
         </p>
         
-        <h3 id="info">Where can I get more information?</h3>
-        <p><a href="http://tools.ietf.org/html/rfc4193">RFC 4193</a></p>
+        <h3 id="easy">Isn't there an easier way to do this?</h3>
+        <p>
+          If you want to use a unique local network for your personal use or for testing only, no one bars you from using fd00::/48, fd00:abba::/48 or fd00:1234::/48. That said, frequent and frustrating <a href="#why-unique">conflicts</a> in IPv4 networks are why IPv6 private networking has an element of uniqueness in the first place - this wasn't an arbitrary decision in IPv6's design. There's no good reason <i>not</i> to use a randomly generated address - how about the ones you've <a href="/">already generated</a>?
+        </p>
+
+        <h3 id="globally-unique">Are IPv6 ULAs really globally unique?</h3>
+        <p>
+          The Global ID part of unique local addresses is a pseudo-randomly generated 40-bit integer. There is the possibility that multiple IPv6 sites will use the same Global ID and result in a conflict, however this should be <i>unlikely.</i> Just how likely? Not impossible, thanks to the <a href="https://en.wikipedia.org/wiki/Birthday_problem">birthday problem</a>:
+        </p>
+        <ul>
+          <li>Connecting 2 networks, the probability of a collision is 0.000000000181%</li>
+          <li>Connecting 100 networks, the probability is 0.0000454%</li>
+          <li>Connecting 10,000 networks, the probability is 0.00454%</li>
+        </ul>
+        <p>
+          Connecting more than that, it'd be a wonder you're not already on the internet. These calculations are from RFC 4193 <a href="https://datatracker.ietf.org/doc/html/rfc4193#section-3.2.3">section 3.2.3</a>, for reference.
+        </p>
+
+        <h3 id="global-ids-by-us">How does this site generate Global IDs?</h3>
+        <p>
+          The original, circa-2013 site generated ULAs server-side, so we can't know for sure. When the site was rewritten in 2014, it began to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a> to generate the Global ID. As IPv6 ULAs are not a <i>security</i> sensitive context, this is sufficient and I have not rewritten this to use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API">Web Crypto API</a>.
+        </p>
+
+        <h3 id="global-ids-by-rfc">Is this the Global ID generation method recommended by RFC 4193?</h3>
+        <p>
+          No. RFC 4193 <a href="https://datatracker.ietf.org/doc/html/rfc4193#section-3.2.2">section 3.2.2</a> defines a process to obtain a global ID by:
+        </p>
+        <ol>
+          <li>Obtaining the current time.</li>
+          <li>Obtaining a unique system identifier such as an EUI-64, MAC address, or reasonably random number.</li>
+          <li>Creating a reasonably unique key by concatenating the time and random number.</li>
+          <li>Computing a SHA1 digest of the key.</li>
+          <li>Using the least significant 40 bits of the SHA1 digest as the Global ID.</li>
+        </ol>
+        <p>
+          If you <i>really</i> want to follow the spec, use <a href="https://cd34.com/rfc4193/">cd34's</a> ULA generator. I find the simple promise of "approximately uniform PRNG" provided by Math.random() more convenient, but while unlikely, it's possible that poor seeding practices for Math.random() by your browser could produce identical ULAs.
+        </p>
+        <p>
+          This is why RFC definitions are not really as simple as "use a correctly seeded PRNG."
+        </p>
+        
+        <h3 id="more-info">Where can I get more information?</h3>
+        <p>
+          The Internet Society has curated a <a href="https://www.internetsociety.org/deploy360/ipv6/">list of learning resources</a> for IPv6. To dive deeper on IPv6 private addressing, always be sure to reference <a href="https://datatracker.ietf.org/doc/html/rfc4193">the RFC</a>.
+        </p>
       </div>
 
       <div class="footer">
-        <p class="pull-right">&copy; 2013 unique-local-ipv6.com</p>
+        <p class="pull-right">
+          Original &copy; 2013 unique-local-ipv6.com, with updates by <a href="https://chris.partridge.tech/">tweedge</a>.
+        </p>
       </div>
-    </div> <!-- /container -->
-    <script src="/libraries/jquery/1.10.2/jquery.min.js"></script>
-    <script src="/libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
+    </div>
+    <script src="libraries/jquery/1.10.2/jquery.min.js"></script>
+    <script src="libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
   </body>
 </html>
