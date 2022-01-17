@@ -6,6 +6,6 @@ This site was made in 2013 by an unknown author. Based on historical WHOIS recor
 
 This is a success story in digital preservation - even without my interaction. Keeping the logic clientside, maintaining a fairly lean list of dependencies, and avoiding UI/UX destroying crapware made this site usable even within the Wayback Machine. Even though this site was (and is) liable to disappear because it has a single owner who will eventually move on from the project or die, its days of being used to help people are not necessarily over.
 
-As part of this restoration, I cleaned up, slapped on a favicon, deployed the site to S3/CloudFront, and rewrote the FAQ with more questions that I came across (or felt others might) when deploying IPv6 ULAs. Just about good as new.
+As part of this restoration, I cleaned up, slapped on a favicon, deployed the site to S3/CloudFront, and rewrote the FAQ with more questions that I came across (or felt others might) when deploying IPv6 ULAs. Just about good as new. I hope this site can now help you as it helped me, and it will be available for the forseeable future at [https://unique-local-ipv6.com/](https://unique-local-ipv6.com/).
 
-I hope this site can now help you as it helped me, and it will be available for the forseeable future at [https://unique-local-ipv6.com/](https://unique-local-ipv6.com/).
+For any corrections, missing content, or corrections, please feel free to file [a new issue here](https://github.com/tweedge/unique-local-ipv6/issues). Thanks!
