@@ -11,124 +11,78 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="/">Home</a></li>
-          <li class="active"><a href="about.html">About</a></li>
+          <li class="active"><a href="/">Generator</a></li>
+          <li><a href="faq.html">Unique-Local</a></li>
+          <li><a href="about.html">IPv6 Basics</a></li>
         </ul>
         <h3 class="text-muted">Unique Local IPv6 Generator</h3>
       </div>
 
       <div>
-         <h2>Composition</h2>
-         
-         <pre>
-         +--------+-+------------+-----------+----------------------------+
-         | 7 bits |1|  40 bits   |  16 bits  |          64 bits           |
-         +--------+-+------------+-----------+----------------------------+
-         | Prefix |L| Global ID  | Subnet ID |        Interface ID        |
-         +--------+-+------------+-----------+----------------------------+
-         </pre>
-         
-         <table>
-             <tr>
-                 <th>Prefix</th>
-                 <td>fc::/7</td>
-             </tr>
-             <tr>
-                 <th>Local (L)</th>
-                 <td>1</td>
-             </tr>
-             <tr>
-                 <th>Global ID</th>
-                 <td>Uniquely identifies your network</td>
-             </tr>
-             <tr>
-                 <th>Subnet ID</th>
-                 <td>0 - ffff <i>use freely for your own IPv6 subnetting</i></td>
-             </tr>
-             <tr>
-                 <th>Interface ID</th>
-                 <td>Your host address. </td>
-             </tr>
-         </table>
-         
-         <h2>F.A.Q.</h2>
-         <ul>
-             <li><a href="#what">What's a unique local address?</a></li>
-             <li><a href="#use">What's the use?</a></li>
-             <li><a href="#unique">Why do they need to be unique?</a></li>
-             <li><a href="#globally">Are they really globally unique?</a></li>
-             <li><a href="#easy">Isn't there an easy way?</a></li>
-             <li><a href="#subnet">What is the subnet id?</a></li>
-             <li><a href="#info">Where can I get more information?</a></li>
-         </ul>
-         
-         <h3 id="what">What's a unique local address?</h3>
-         <p>IPv6 unique local addresses are similar to the IPv4 private address classes
-         with one big difference: THE ARE UNIQUE.</p>
-         <h4>IPv4 private addresses</h4>
-         <table>
-             <tr>
-                 <th>Class A</th>
-                 <td>10.0.0.0/8</td>
-             </tr>
-             <tr>
-                 <th>Class B</th>
-                 <td>172.16.0.0/12</td>
-             </tr>
-             <tr>
-                 <th>Class C</th>
-                 <td>192.168.0.0/16</td>
-             </tr>
-         </table>
-         <h4>IPv6 unique local addresses</h4>
-         <p>fd::/48 - fd:ffff:ffff::/48
-         
-         <h3 id="use">What's the use?</h3>
-         <p>Local network addresses are used to make specific services only
-         available for people and computers within your private network.</p>
-         <p>For example if your company runs an intranet website containing
-         confidential information about products, sales, customers or what so ever. This
-         information might be vital for your employees to do their jobs, but you
-         definitely don't want to make this website available publicly.</p>
-         
-         <h3 id="unique">Why do they need to be unique?</h3>
-         <p>Sometimes you want to join two or more private networks. A common example is
-         when you connect your PC from your home network to your office network using a
-         VPN. When both networks use the same private address range (e.g.
-         192.168.1.0/24) you only reach the office network during your VPN session as a
-         result of a routing problem.</p>
-         
-         <h3 id="globally">Are they really globally unique?</h3>
-         <p>The global id part of unique local addresses is a randomly generated 40-bit
-         integer. So there's a small possibility that two networks on this planet use
-         the same unique local address. But there's a very little likelihood that this
-         is ever going to happen. PROBABILITY: 1:1099511627776 or ~0.000000000001</p>
-         
-         <h3 id="easy">Isn't there an easy way?</h3>
-         <p>If you want to use a unique local network for your personal use or for
-         testing only, no one bars you from using fd::/48, fd:abba::/48 or fd:1234::/48.
-         But keep in mind there's are reason they have been made unique in the first
-         place. And there's actually no good reason not to use a randomly generated
-         address. How about that one on top of this page?</p>
-         
-         <h3 id="subnet">What is the subnet id?</h3>
-         <p>After the global id you have 16 bits for your subnetting. Use them at
-         will.</p>
-         <p>If you don't have any subnetting plans right now, just start with 0000
-         (luckily you don't have to write that).
-         
-         <h3 id="info">Where can I get more information?</h3>
-         <p><a href="http://tools.ietf.org/html/rfc4193">RFC 4193</a></p>
-      </div>
+        <h2>IPv6 Address Basics</h2>
+        <p>
+          This short article aims to give a compact overview over the structure
+          of IPv6 addresses.
+        </p>
 
+        <br>
+        <h4>Address length</h4>
+        <p>
+          The IPv6 address is 128 bits or 16 bytes long and is written in 8
+          hexadecimal blocks separated by colons. Each block consists of 16
+          bits or 2 bytes.
+        </p>
+        <p>
+          Because IPv6 addresses get quite long there are two rules to shorten
+          the address:
+        </p>
+        <ol>
+          <li>Leading zeroes can be omitted in each block</li>
+          <li>Multiple blocks of zeroes can be omitted once</li>
+        </ol>
+
+        <br>
+        <h4>Leading zeroes</h4>
+        <p>
+          When you write an IPv6 address, you can omit leading zeroes (the ones
+          on the left) in each block:
+        </p>
+        <pre>
+IPv6 address with leading zeroes
+2001:1620:0028:0001:0b6f:8bca:0093:a116
+          ^^   ^^^  ^         ^^
+
+Leading zeroes removed
+2001:1620:28:1:b6f:8bca:93:a116
+        </pre>
+
+        <br>
+        <h4>Blocks of zeroes</h4>
+        <p>
+          If one block or multiple joining blocks consist of only zeroes. They
+          can be omitted and written as two colons. Watch out, this may only be
+          done only once per address.
+        </p>
+        <pre>
+Complete IPv6 address
+2001:1620:0028:0000:0000:0000:0000:0116
+               ^^^^ ^^^^ ^^^^ ^^^^
+
+Blocks of zeroes omitted
+2001:1620:0028::0116
+          ^^    ^
+Without leading zeroes
+2001:1620:28::116
+        </pre>
+
+        <br>
+      </div>
+      
       <div class="footer">
         <p class="pull-right">&copy; 2013 unique-local-ipv6.com</p>
       </div>
-
     </div> <!-- /container -->
-
     <script src="/libraries/jquery/1.10.2/jquery.min.js"></script>
     <script src="/libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
-
   </body>
 </html>
