@@ -18,4 +18,5 @@ jobs:
           aws-region: us-east-2
       - name: Update S3
         run: |
-          aws s3 sync ./ s3://unique-local-ipv6-com --delete --exclude ".git/*"
+          rm -rf .git
+          aws s3 sync ./ s3://unique-local-ipv6-com --delete
