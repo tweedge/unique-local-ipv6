@@ -27,7 +27,7 @@
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>64-bit subnetting</h4>
-          <p>Unique local addresses have 48-bit prefixes, leaving 16 bits for local subnetting. Below see the addresses of the first and last subnets.</p>
+          <p>Unique local addresses have 48-bit prefixes, leaving 16 bits for local subnetting. Below is the prefix as well as the addresses of the first and last subnets.</p>
           <table class="table table-hover">
             <tr>
               <th>Prefix</th>
@@ -47,12 +47,7 @@
         <div class="col-lg-6">
           <h4>IPv4 local address equivalent</h4>
           <p>
-            The IPv6 unique local addresses are used similarly to the IPv4
-            local adresses e.g. 10.0.0.0/8. Unlike their IPv4 counterpart IPv6 unique local
-            addresses have a 40-bit random part. Therefore if you connect 2 or more unique
-            local networks, by VPN for example, it's very unlikely to ever have address
-            collisions.
-            <a href="about.html">[+]</a>
+            IPv6 <a href="https://en.wikipedia.org/wiki/Unique_local_address">unique local addresses</a> (ULAs) are used similarly to the IPv4 local adresses, such 10.0.0.0/8. IPv4 private addresses were defined by [RFC1918](https://datatracker.ietf.org/doc/html/rfc1918), while IPv6 ULAs were defined by <a href="https://datatracker.ietf.org/doc/html/rfc4193">RFC4913</a>. Unlike their IPv4 counterpart, IPv6 local addresses have a 40-bit random part, which makes them unique. The goal of IPv6 local addresses is that if you connect two private IPv6 networks together - such as two private sites connected over VPN - it should be very unlikely that you will run into addressing conflicts. <a href="faq.html">[+]</a>
           </p>
         </div>
       </div>
