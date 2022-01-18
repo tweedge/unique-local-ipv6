@@ -18,5 +18,5 @@ jobs:
           aws-region: us-east-2
       - name: Update S3
         run: |
-          rm -rf .git README.md
+          rm -rf .git README.md .github
           aws s3 sync ./ s3://unique-local-ipv6-com --delete --cache-control max-age=604800
