@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
   <head>
     <title>Unique Local IPv6 Generator</title>
     <meta charset="utf-8">
+    <meta name="description" content="Generate unique local IPv6 address blocks (Unique Local Addresses, ULAs) instantly with JavaScript.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="libraries/bootstrap/3.0.3/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -19,7 +20,7 @@
       </div>
 
       <div class="jumbotron">
-        <h1 class="prefix">::/48</h1>
+        <h1 class="prefix">Create a new ::/48!</h1>
         <p class="lead">This is a randomly generated 48-bit unique local IPv6 prefix as defined by <a href="https://datatracker.ietf.org/doc/html/rfc4193">RFC 4193</a>. It can be used for local IPv6 networking. A new random prefix will be generated every time the regenerate button is pressed, using JavaScript.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button" id="generate-button">Regenerate</a></p>
       </div>
@@ -33,15 +34,15 @@
           <table class="table table-hover">
             <tr>
               <th>Prefix</th>
-              <td class="prefix">::/48</td>
+              <td class="prefix">Waiting to generate a ::/48</td>
             </tr>
             <tr>
               <th>First subnet</th>
-              <td class="sub-1st">::/64</td>
+              <td class="sub-1st">Waiting to generate the 1st ::/64</td>
             </tr>
             <tr>
               <th>Last subnet</th>
-              <td class="sub-last">:ffff::/64</td>
+              <td class="sub-last">Waiting to generate the last ::/64</td>
             </tr>
           </table>
           <p>
