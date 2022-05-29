@@ -17,4 +17,3 @@ jobs:
           server: ny.storage.bunnycdn.com
           username: unique-local-ipv6
           password: ${{ secrets.BUNNY_FTP_PASSWORD }}
-          server-dir: unique-local-ipv6/
