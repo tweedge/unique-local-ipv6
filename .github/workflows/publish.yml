@@ -1,0 +1,20 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch main
+        uses: actions/checkout@v2
+      - name: Sync to BunnyCDN
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ny.storage.bunnycdn.com
+          username: unique-local-ipv6
+          password: ${{ secrets.BUNNY_FTP_PASSWORD }}
+          server-dir: unique-local-ipv6/
