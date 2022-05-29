@@ -21,3 +21,4 @@ jobs:
           dist_target_dir: ""
           delete: "true"
           exclude: "'^.git/' '^.github/' '^README.md'"
+          disable_ssl_certificate_verification: false
