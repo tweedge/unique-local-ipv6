@@ -1,4 +1,9 @@
 User-agent: *
-Allow: /
+Allow: /about.html
+Allow: /faq.html
+Allow: /index.html
+Allow: /$
+Disallow: /
 
 Sitemap: https://unique-local-ipv6.com/sitemap.xml
+Host: unique-local-ipv6.com
