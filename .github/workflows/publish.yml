@@ -12,8 +12,12 @@ jobs:
       - name: Fetch main
         uses: actions/checkout@v2
       - name: Sync to BunnyCDN
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
-          server: ny.storage.bunnycdn.com
-          username: unique-local-ipv6
-          password: ${{ secrets.BUNNY_FTP_PASSWORD }}
+          ftp_host: ny.storage.bunnycdn.com
+          ftp_username: unique-local-ipv6
+          ftp_password: ${{ secrets.BUNNY_FTP_PASSWORD }}
+          local_source_dir: "."
+          dist_target_dir: ""
+          delete: "true"
+          exclude: "'^logs/' '^README.md'"
