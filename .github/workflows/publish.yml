@@ -15,7 +15,7 @@ jobs:
         uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
           ftp_host: ny.storage.bunnycdn.com
-          ftp_username: unique-local-ipv6
+          ftp_username: unique-local-ipv6-com
           ftp_password: ${{ secrets.BUNNY_FTP_PASSWORD }}
           local_source_dir: "."
           dist_target_dir: ""
