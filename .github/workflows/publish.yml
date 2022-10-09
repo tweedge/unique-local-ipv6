@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         region: 
@@ -24,6 +24,7 @@ jobs:
           - "us-west-1"
           - "us-west-2"
     steps:
+      - name: Fetch main
         uses: actions/checkout@v2
       - name: Remove unwanted files
         run: |
@@ -34,6 +35,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ matrix.region }}
-      - name: Update S3 Per-Site
+      - name: Update S3 per-region
         run: |
          aws s3 sync . s3://${{ secrets.AWS_BUCKET_PREFIX }}-${{ matrix.region }}/unique-local-ipv6.com/ --delete
