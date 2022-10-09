@@ -27,6 +27,9 @@ jobs:
     steps:
       - name: Fetch main
         uses: actions/checkout@v2
+      - name: Amend region
+        run: |
+          sed -i -e "s/AWS_DEPLOY_REPLACE_WITH_REGION/${{ matrix.region }}/g" about.html
       - name: Remove unwanted files
         run: |
           rm -rf .git .github README.md
