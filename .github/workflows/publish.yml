@@ -8,37 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        region: 
-          - "ap-northeast-1"
-          - "ap-northeast-2"
-          - "ap-south-1"
-          - "ap-southeast-1"
-          - "ap-southeast-2"
-          - "eu-central-1"
-          - "eu-west-1"
-          - "eu-west-2"
-          - "sa-east-1"
-          - "us-east-1"
-          - "us-east-2"
-          - "us-west-1"
-          - "us-west-2"
     steps:
       - name: Fetch main
         uses: actions/checkout@v2
-      - name: Amend region
-        run: |
-          sed -i -e "s/AWS_DEPLOY_REPLACE_WITH_REGION/${{ matrix.region }}/g" about.html
-      - name: Remove unwanted files
-        run: |
-          rm -rf .git .github README.md
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Sync to BunnyCDN
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ matrix.region }}
-      - name: Update S3 per-region
-        run: |
-         aws s3 sync . s3://${{ secrets.AWS_BUCKET_PREFIX }}-${{ matrix.region }}/unique-local-ipv6.com/ --delete
+          ftp_host: storage.bunnycdn.com
+          ftp_username: unique-local-ipv6-com-standard
+          ftp_password: ${{ secrets.BUNNY_FTP_PASSWORD }}
+          local_source_dir: "."
+          dist_target_dir: ""
+          delete: "true"
+          exclude: "'^.git/' '^.github/' '^README.md'"
+          disable_ssl_certificate_verification: false
