@@ -27,7 +27,7 @@ jobs:
         with:
           ftp_host: storage.bunnycdn.com
           ftp_username: unique-local-ipv6-com-standard
-          ftp_password: ${{ secrets.BUNNY_FTP_PASSWORD }}
+          ftp_password: ${{ secrets.BUNNY_FTP_PASSWORD_STANDARD }}
           local_source_dir: "."
           dist_target_dir: ""
           delete: "true"
