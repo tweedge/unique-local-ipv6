@@ -11,7 +11,18 @@ jobs:
     steps:
       - name: Fetch main
         uses: actions/checkout@v2
-      - name: Sync to BunnyCDN
+      - name: Sync to BunnyCDN Edge
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+        with:
+          ftp_host: storage.bunnycdn.com
+          ftp_username: unique-local-ipv6-com-edge
+          ftp_password: ${{ secrets.BUNNY_FTP_PASSWORD_EDGE }}
+          local_source_dir: "."
+          dist_target_dir: ""
+          delete: "true"
+          exclude: "'^.git/' '^.github/' '^README.md'"
+          disable_ssl_certificate_verification: false
+      - name: Sync to BunnyCDN Standard
         uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
           ftp_host: storage.bunnycdn.com
