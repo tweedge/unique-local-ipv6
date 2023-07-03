@@ -26,7 +26,7 @@
           <li><a href="#why-private">Why are private addresses useful?</a></li>
           <li><a href="#why-unique">Why should private addresses be unique?</a></li>
           <li><a href="#composition">What is the composition of an IPv6 ULA?</a></li>
-          <li><a href="#fc7-vs-fd8">What's the difference between fc::/7 and fd::/8?</a></li>
+          <li><a href="#fc7-vs-fd8">What's the difference between fc00::/7 and fd00::/8?</a></li>
           <li><a href="#picking-a-subnet">What Subnet ID should I use?</a></li>
           <li><a href="#easy">Isn't there an easier way to do this?</a></li>
           <li><a href="#globally-unique">Are IPv6 ULAs really globally unique?</a></li>
@@ -84,16 +84,16 @@
           +--------+-+------------+-----------+----------------------------+
         </pre>
         <ul>
-          <li><b>Prefix</b>: fc::/7</li>
+          <li><b>Prefix</b>: fc00::/7</li>
           <li><b>Local (L) bit</b>: Must be set to 1</li>
           <li><b>Global ID</b>: Uniquely identifies your network, should be random</li>
           <li><b>Subnet ID</b>: 0 - ffff, can be used however you need</li>
           <li><b>Interface ID</b>: Host addresses within your subnet</li>
         </ul>
 
-        <h3 id="fc7-vs-fd8">What's the difference between fc::/7 and fd::/8?</h3>
+        <h3 id="fc7-vs-fd8">What's the difference between fc00::/7 and fd00::/8?</h3>
         <p>
-          The prefix allocated by RFC 4193 for private addressing is fc::/7, but the 8th bit ("Local" or L) <i>must</i> be set to 1, which makes the prefix that we can actually <i>use</i> start with "fd."
+          The prefix allocated by RFC 4193 for private addressing is fc00::/7, but the 8th bit ("Local" or L) <i>must</i> be set to 1, which makes the prefix that we can actually <i>use</i> start with "fd00."
         </p>
         <pre>
               bit position: 12345678
@@ -104,7 +104,7 @@
           Don't quite get it? Try the <a href="https://simple.wikipedia.org/wiki/Hexadecimal">Simple English Wikipedia entry on hexadecimal</a> - should help!
         </p>
         <p>
-          This also halves the address block's size, as one additional bit has been reserved, hence why it's fd::/8 and <i>not</i> fd::/7.
+          This also halves the address block's size, as one additional bit has been reserved, hence why it's fd00::/8 and <i>not</i> fd00::/7.
         </p>
 
         <h3 id="picking-a-subnet">What Subnet ID should I use?</h3>
