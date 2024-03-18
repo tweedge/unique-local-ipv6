@@ -52,8 +52,25 @@ body {
   font-size: 21px;
   padding: 14px 24px;
 }
+
+.jumbotron .prefix {
+    font-size: 50px;
+}
+
 .prefix {
-  font-family: Monospace;
+    font-family: Monospace;
+    font-weight: bold;
+}
+
+.sub-1st, .sub-last {
+    font-family: Monospace;
+}
+
+.sub-1st {
+    color: #007700;
+}
+.sub-last {
+    color: #770000;
 }
 
 /* Supporting marketing content */
