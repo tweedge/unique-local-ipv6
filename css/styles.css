@@ -52,6 +52,9 @@ body {
   font-size: 21px;
   padding: 14px 24px;
 }
+.prefix {
+  font-family: Monospace;
+}
 
 /* Supporting marketing content */
 .marketing {
