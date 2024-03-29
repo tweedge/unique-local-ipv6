@@ -15,8 +15,8 @@ function random_ipv6()
 {
     var prefix = Array(
     'fd' + random_block(8, true),
-    random_block(16, false),
-    random_block(16, false)).join(':');
+    random_block(16, true),
+    random_block(16, true)).join(':');
     return prefix;
 }
 
