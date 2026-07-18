@@ -1,3 +1,5 @@
+'use strict'
+
 document.getElementById("generate-button").addEventListener("click", generate);
 
 function random_block(bits, leading_zeroes)
