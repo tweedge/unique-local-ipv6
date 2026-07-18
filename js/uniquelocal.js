@@ -23,9 +23,21 @@ function random_ipv6()
 function generate()
 {
     var prefix = random_ipv6();
-    $('.prefix').html(prefix + '::/48');
-    $('.sub-1st').html(prefix + '::/64');
-    $('.sub-last').html(prefix + ':ffff::/64');
+
+    var prefixElems = document.getElementsByClassName('prefix');
+    [].forEach.call(prefixElems, function (el) {
+        el.innerText = prefix + '::/48'
+    });
+
+    var sub1st = document.getElementById('sub-1st');
+    if (sub1st) {
+        sub1st.innerText = prefix + '::/64';
+    }
+
+    var subLast = document.getElementById('sub-last');
+    if (subLast) {
+        subLast.innerText = prefix + ':ffff::/64';
+    }
 }
 
 generate();
