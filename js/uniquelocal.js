@@ -1,7 +1,5 @@
 'use strict'
 
-document.getElementById("generate-button").addEventListener("click", generate);
-
 function random_block(bits, leading_zeroes)
 {
     var block = Math.floor(Math.random()*Math.pow(2,bits)).toString(16); 
@@ -42,4 +40,7 @@ function generate()
     }
 }
 
-generate();
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("generate-button").addEventListener("click", generate);
+  generate();
+});
