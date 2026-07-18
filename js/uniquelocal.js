@@ -25,7 +25,7 @@ function generate()
     var prefix = random_ipv6();
 
     var prefixElems = document.getElementsByClassName('prefix');
-    [].forEach.call(prefixElems, function (el) {
+    [].forEach.call(prefixElems, function(el) {
         el.innerText = prefix + '::/48'
     });
 
