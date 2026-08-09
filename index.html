@@ -7,6 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="libraries/bootstrap/3.0.3/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/uniquelocal.js" defer="defer" async="async"></script>
   </head>
   <body>
     <div class="container">
@@ -38,11 +39,11 @@
             </tr>
             <tr>
               <th>First subnet</th>
-              <td class="sub-1st">Waiting to generate the 1st ::/64</td>
+              <td id="sub-1st">Waiting to generate the 1st ::/64</td>
             </tr>
             <tr>
               <th>Last subnet</th>
-              <td class="sub-last">Waiting to generate the last ::/64</td>
+              <td id="sub-last">Waiting to generate the last ::/64</td>
             </tr>
           </table>
           <p>
@@ -64,10 +65,5 @@
         </p>
       </div>
     </div>
-    <script src="libraries/jquery/1.10.2/jquery.min.js"></script>
-    <script src="libraries/bootstrap/3.0.3/bootstrap.min.js"></script>
-    <script src="js/uniquelocal.js">
-      generate();
-    </script>
   </body>
 </html>
